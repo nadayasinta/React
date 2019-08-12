@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
 .home-background {
-  background-image: url("../img/bg-img.png");
+  background-image: url("../images/bg-img.png");
   background-size: 100%;
 }
 .homeground {
@@ -13,7 +13,7 @@
   margin: auto;
 }
 header {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 11px;
 }
 header ul {
@@ -23,42 +23,42 @@ footer {
   background-color: #19345E;
 }
 footer h6 {
-  font-family: 'SF Compact Display', sans-serif;
+  font-family: "SF Compact Display", sans-serif;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 500;
 }
 .navig a {
   color: #19345E;
   text-decoration: none;
   margin: 0 15px;
-  font-family: 'Muli' sans-serif;
+  font-family: "Muli" sans-serif;
   font-size: 13px;
 }
 .navig a:hover {
-  color: #F47522;
+  color: #f47522;
 }
 .navig a.aktif {
-  color: #F47522;
+  color: #f47522;
   font-weight: bold;
 }
 .about-me {
-  background-color: #F4F7FC;
+  background-color: #f4f7fc;
 }
 .about-me h1 {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 40px;
   color: #19345E;
   font-weight: bold;
 }
 .about-anne {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 17px;
   color: #19345E;
 }
 .tabel-anne tr td {
   border: #19345E solid 1px;
-  font-family: 'Muli' sans-serif;
+  font-family: "Muli" sans-serif;
   font-size: 14px;
   color: #19345E;
   padding: 5px 25px;
@@ -71,7 +71,7 @@ footer h6 {
   border-radius: 10px;
 }
 .foto-id:after {
-  background-image: url("../../asset/img/img-dot@2x.png");
+  background-image: url("../images/img-dot@2x.png");
   width: 90px;
   height: 76px;
   background-size: 90px;
@@ -106,7 +106,7 @@ footer h6 {
   padding-top: 200px;
 }
 .main-p {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   color: #19345E;
   padding-left: 40px;
@@ -126,8 +126,8 @@ footer h6 {
   font-size: 35px;
 }
 .tombol {
-  background-color: #F47522;
-  border: 2px solid #F47522;
+  background-color: #f47522;
+  border: 2px solid #f47522;
   width: 150px auto;
   height: 30px auto;
   text-align: center;
@@ -135,21 +135,21 @@ footer h6 {
   margin-top: 40px;
   padding: 8px 35px;
   font-size: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   border-radius: 25px;
   transition: all 0.5s ease;
   cursor: pointer;
   -webkit-user-select: text;
 }
 .tombol a {
-  color: #FFFFFF;
+  color: #ffffff;
   text-decoration: none;
 }
 .isi {
   height: 100%;
 }
 .form-img {
-  background-image: url("../img/charles-rRWiVQzLm7k-unsplash.jpg");
+  background-image: url("../images/charles-rRWiVQzLm7k-unsplash.jpg");
   background-size: cover;
   padding: 0;
   width: 100%;
@@ -167,7 +167,7 @@ footer h6 {
   width: 248px;
 }
 .isi-form {
-  font-family: 'Muli' sans-serif;
+  font-family: "Muli" sans-serif;
   font-size: 23px;
   color: #19345E;
   padding: 0px 150px;

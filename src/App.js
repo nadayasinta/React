@@ -1,15 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Home from './Home';
-import About from './About';
-import Contact from './Contact';
-import './asset/less/main.css'
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import "./styles/main.css";
 
 function App() {
-  return (
-    <div className="App">
-      {/* <header className="App-header">
+    return (
+        <div className="App">
+            {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -23,11 +23,11 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Home />
-      {/* <About /> */}
-      {/* <Contact /> */}
-    </div>
-  );
+            <Home />
+            {/* <About /> */}
+            {/* <Contact /> */}
+        </div>
+    );
 }
 
 export default App;
