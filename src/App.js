@@ -1,9 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
+// import logo from "./images/logo.svg";
 import "./App.css";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
 import "./styles/main.css";
 
 function App() {
@@ -24,8 +22,6 @@ function App() {
         </a>
       </header> */}
             <Home />
-            {/* <About /> */}
-            {/* <Contact /> */}
         </div>
     );
 }
