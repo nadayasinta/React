@@ -1,7 +1,14 @@
 import React from "react";
 import logo from "../images/logo.svg";
+import { Link } from "react-router-dom";
 
-function Header() {
+function Header(props) {
+    const clickSignOut = () => {
+        localStorage.setItem("username", "");
+        localStorage.setItem("email", "");
+        localStorage.setItem("status", "");
+    };
+
     return (
         <div class="header container-fluid">
             <div class="row align-items-center py-2 px-5">
@@ -18,45 +25,62 @@ function Header() {
                     <nav>
                         <ul class="m-0">
                             <li>
-                                <a href="/#">Sepakbola</a>
+                                <Link to="/">Home</Link>
                             </li>
                             <li>
-                                <a href="/#">Ekonomi</a>
+                                <Link to="/profile">Profile</Link>
                             </li>
                             <li>
-                                <a href="/#">Politik</a>
+                                <Link to="/category/business">Business</Link>
                             </li>
                             <li>
-                                <a href="/#">Hiburan</a>
+                                <Link to="/category/health">Health</Link>
+                            </li>
+                            <li>
+                                <Link to="/category/science">Science</Link>
                             </li>
 
                             <li>
-                                <div class="dropdown show ">
-                                    <a
+                                <div class="dropdown">
+                                    <button
                                         class="btn p-0 dropdown-toggle"
-                                        href="/#"
-                                        role="button"
-                                        id="dropdownMenuLink"
+                                        type="button"
+                                        id="dropdownMenuButton"
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
                                         aria-expanded="false"
                                     >
                                         Lainnya
-                                    </a>
+                                    </button>
 
                                     <div
                                         class="dropdown-menu"
-                                        aria-labelledby="dropdownMenuLink"
+                                        aria-labelledby="dropdownMenuButton"
                                     >
-                                        <a class="dropdown-item" href="/#">
-                                            Action
-                                        </a>
-                                        <a class="dropdown-item" href="/#">
-                                            Another action
-                                        </a>
-                                        <a class="dropdown-item" href="/#">
-                                            Something else here
-                                        </a>
+                                        <Link
+                                            class="dropdown-item"
+                                            to="/category/entertainment"
+                                        >
+                                            Entertainment
+                                        </Link>
+                                        <Link
+                                            class="dropdown-item"
+                                            to="/category/general"
+                                        >
+                                            General
+                                        </Link>
+                                        <Link
+                                            class="dropdown-item"
+                                            to="/category/sports"
+                                        >
+                                            Sports
+                                        </Link>
+                                        <Link
+                                            class="dropdown-item"
+                                            to="/category/technology"
+                                        >
+                                            Technology
+                                        </Link>
                                     </div>
                                 </div>
                             </li>
@@ -71,6 +95,7 @@ function Header() {
                             type="text"
                             placeholder="Search"
                             aria-label="Search"
+                            onChange={props.doSearch}
                         />
                     </div>
                 </div>
@@ -78,12 +103,12 @@ function Header() {
                 <div class="col-3 ">
                     <nav>
                         <ul class="m-0 float-right">
-                            <a href="/#">
-                                <li>Masuk</li>
-                            </a>
-                            <a href="/#">
-                                <li>Daftar</li>
-                            </a>
+                            <Link to="/signin">
+                                <li>Sign In</li>
+                            </Link>
+                            <Link to="/signin" onClick={clickSignOut}>
+                                <li>Sign Out</li>
+                            </Link>
                         </ul>
                     </nav>
                 </div>
