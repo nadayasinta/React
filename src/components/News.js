@@ -4,28 +4,29 @@ import dislikeimage from "../images/dislike.png";
 import heartimage from "../images/heart.png";
 import shareimage from "../images/share.png";
 
-function News() {
+function News(props) {
     return (
         <div class="container news">
             <div class="row border">
                 <div class="col-12 p-0">
-                    <img class="logo w-100" src={newsimage} alt="logo" />{" "}
+                    <img
+                        class="logo w-100"
+                        src={props.news.urlToImage}
+                        alt="logo"
+                    />{" "}
                 </div>
                 <div class="col-12 text-left py-3">
                     <h3 class="font-weight-bold">
-                        Deterjen Cair dan Bubuk, Mana Lebih Baik?
+                        <a href={props.news.url}>{props.news.title}</a>
                     </h3>
                 </div>
                 <div class="col-12 text-left">
-                    <p>
-                        Ketika mencuci, ada banyak hal yang kita perlu
-                        perhatikan. Mulai dari kecepatan putaran mesin cucinya,
-                        suhu air, memisahkan jenis-jenis pakaian tertentu ketika
-                        mencuci, dan lainnya.
-                    </p>
+                    <p>{props.news.description}</p>
                 </div>
                 <div class="col-12 text-left">
-                    <p class="text-secondary">Last update 3 minutes ago</p>
+                    <p class="text-secondary">
+                        Publish : {props.news.publishedAt}
+                    </p>
                 </div>
 
                 <div class="col-4 border bg-light py-2">

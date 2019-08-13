@@ -23,9 +23,21 @@
 .news .logososmed {
   width: 20px;
 }
+.news a {
+  color: black;
+}
+.news a:hover {
+  color: black;
+}
 .sidebar {
   color: #579291;
 }
 .sidebar span {
   color: white;
+}
+.sidebar a {
+  color: #579291;
+}
+.sidebar a:hover {
+  color: #579291;
 }
