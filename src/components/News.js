@@ -30,7 +30,7 @@ function News(props) {
                             </p>
                         </div>
 
-                        <div class="col-4 border bg-light py-2">
+                        <div class="col-4 border bg-light py-2 text-center">
                             <a href="/#">
                                 <img
                                     class="logo logososmed"
@@ -39,7 +39,7 @@ function News(props) {
                                 />
                             </a>
                         </div>
-                        <div class="col-4 border bg-light py-2">
+                        <div class="col-4 border bg-light py-2 text-center">
                             <a href="/#">
                                 <img
                                     class="logo logososmed"
@@ -48,7 +48,7 @@ function News(props) {
                                 />
                             </a>
                         </div>
-                        <div class="col-4 border bg-light py-2">
+                        <div class="col-4 border bg-light py-2 text-center">
                             <a href="/#">
                                 <img
                                     class="logo logososmed"

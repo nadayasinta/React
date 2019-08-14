@@ -1,12 +1,15 @@
 import React from "react";
 import logo from "../images/logo.svg";
 import { Link } from "react-router-dom";
+import { connect } from "unistore/react";
+import { actions } from "../components/store";
 
 function Header(props) {
     const clickSignOut = () => {
-        localStorage.setItem("username", "");
-        localStorage.setItem("email", "");
-        localStorage.setItem("status", "");
+        console.log(props);
+        props.setUsername("");
+        props.setEmail("");
+        props.setStatus("");
     };
 
     return (
@@ -43,8 +46,8 @@ function Header(props) {
                             <li>
                                 <div class="dropdown">
                                     <button
-                                        class="btn p-0 dropdown-toggle"
                                         type="button"
+                                        class="btn p-0 dropdown-toggle"
                                         id="dropdownMenuButton"
                                         data-toggle="dropdown"
                                         aria-haspopup="true"
@@ -57,30 +60,37 @@ function Header(props) {
                                         class="dropdown-menu"
                                         aria-labelledby="dropdownMenuButton"
                                     >
-                                        <Link
-                                            class="dropdown-item"
-                                            to="/category/entertainment"
-                                        >
-                                            Entertainment
-                                        </Link>
-                                        <Link
-                                            class="dropdown-item"
-                                            to="/category/general"
-                                        >
-                                            General
-                                        </Link>
-                                        <Link
-                                            class="dropdown-item"
-                                            to="/category/sports"
-                                        >
-                                            Sports
-                                        </Link>
-                                        <Link
-                                            class="dropdown-item"
-                                            to="/category/technology"
-                                        >
-                                            Technology
-                                        </Link>
+                                        <div class="dropdown-item">
+                                            <Link to="/category/entertainment">
+                                                Entertainment
+                                            </Link>
+                                        </div>
+                                        <div class="dropdown-item">
+                                            <Link
+                                                class="dropdown-item"
+                                                to="/category/general"
+                                            >
+                                                General
+                                            </Link>
+                                        </div>
+
+                                        <div class="dropdown-item">
+                                            <Link
+                                                class="dropdown-item"
+                                                to="/category/sports"
+                                            >
+                                                Sports
+                                            </Link>
+                                        </div>
+
+                                        <div class="dropdown-item">
+                                            <Link
+                                                class="dropdown-item"
+                                                to="/category/technology"
+                                            >
+                                                Technology
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -117,4 +127,7 @@ function Header(props) {
     );
 }
 
-export default Header;
+export default connect(
+    "username, email, status",
+    actions
+)(Header);

@@ -1,25 +1,19 @@
 import React from "react";
 import axios from "axios";
 import Header from "../components/Header";
+import { connect } from "unistore/react";
+import { actions } from "../components/store";
 
 class SignIn extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            listNews: [],
-            token: []
-        };
-    }
-
     clickLogin = event => {
         const self = this;
         axios
-            .post("https://nadaaa.free.beeceptor.com/login")
+            .post("https://nadadong.free.beeceptor.com/login")
             .then(function(response) {
                 console.log(response.data);
-                localStorage.setItem("username", response.data.username);
-                localStorage.setItem("email", response.data.email);
-                localStorage.setItem("status", response.data.status);
+                self.props.setUsername(response.data.username);
+                self.props.setEmail(response.data.email);
+                self.props.setStatus(response.data.status);
                 self.props.history.push("/profile");
             })
             .catch(function(error) {
@@ -69,4 +63,7 @@ class SignIn extends React.Component {
     }
 }
 
-export default SignIn;
+export default connect(
+    "username, email, status",
+    actions
+)(SignIn);

@@ -4,6 +4,8 @@ import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 import News from "../components/News";
 import { Redirect } from "react-router-dom";
+import { connect } from "unistore/react";
+import { actions } from "../components/store";
 
 const apiKey = "4dce99fded1c454895c9d9c01b2264d8";
 const baseUrl = "https://newsapi.org/v2/";
@@ -14,7 +16,6 @@ const urlTopNews =
     "everything?" +
     "q=apple&" +
     "from=2019-08-12&" +
-    "to=2019-08-12&" +
     "sortBy=popularity&" +
     "apiKey=" +
     apiKey;
@@ -23,8 +24,6 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            listNews: [],
-            topNews: [],
             value: ""
         };
     }
@@ -34,7 +33,7 @@ class Home extends React.Component {
         axios
             .get(urlHeadline)
             .then(function(response) {
-                self.setState({ listNews: response.data.articles });
+                self.props.setListNews(response.data.articles);
                 console.log(response);
             })
             .catch(function(error) {
@@ -43,7 +42,7 @@ class Home extends React.Component {
         axios
             .get(urlTopNews)
             .then(function(response) {
-                self.setState({ topNews: response.data.articles });
+                self.props.setTopNews(response.data.articles);
                 console.log("to news", response);
             })
             .catch(function(error) {
@@ -63,13 +62,12 @@ class Home extends React.Component {
                             self.state.value +
                             "&" +
                             "from=2019-08-12&" +
-                            "to=2019-08-12&" +
                             "sortBy=popularity&" +
                             "apiKey=" +
                             apiKey
                     )
                     .then(function(response) {
-                        self.setState({ topNews: response.data.articles });
+                        self.props.setTopNews(response.data.articles);
                         console.log("search", response);
                     })
                     .catch(function(error) {
@@ -80,7 +78,7 @@ class Home extends React.Component {
     };
 
     render() {
-        if (!localStorage.getItem("username")) {
+        if (!this.props.status) {
             return <Redirect to={{ pathname: "/signin" }} />;
         } else {
             return (
@@ -94,11 +92,11 @@ class Home extends React.Component {
                         <div class="row">
                             <div class="col-4">
                                 <SideBar
-                                    news={this.state.listNews.slice(0, 5)}
+                                    news={this.props.listNews.slice(0, 5)}
                                 />
                             </div>
                             <div class="col-8">
-                                <News news={this.state.topNews.slice(0, 5)} />
+                                <News news={this.props.topNews.slice(0, 10)} />
                             </div>
                         </div>
                     </div>
@@ -108,4 +106,7 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default connect(
+    "username, email, status,listNews,topNews",
+    actions
+)(Home);

@@ -1,11 +1,14 @@
 import React from "react";
 import Header from "../components/Header";
 import { Redirect } from "react-router-dom";
+import { connect } from "unistore/react";
+import { actions } from "../components/store";
 
-const Profile = () => {
-    const username = localStorage.getItem("username");
-    const email = localStorage.getItem("email");
-    const status = localStorage.getItem("status");
+const Profile = props => {
+    const username = props.username;
+    const email = props.email;
+    const status = props.status;
+    console.log(status);
     if (!status) {
         return <Redirect to={{ pathname: "/signin" }} />;
     } else {
@@ -29,4 +32,7 @@ const Profile = () => {
     }
 };
 
-export default Profile;
+export default connect(
+    "username, email, status",
+    actions
+)(Profile);

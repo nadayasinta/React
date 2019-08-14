@@ -3,6 +3,8 @@ import axios from "axios";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 import News from "../components/News";
+import { connect } from "unistore/react";
+import { actions } from "../components/store";
 
 const apiKey = "4dce99fded1c454895c9d9c01b2264d8";
 const baseUrl = "https://newsapi.org/v2/";
@@ -13,8 +15,6 @@ class Kategori extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            listNews: [],
-            topNews: [],
             value: "",
             kat: ""
         };
@@ -23,13 +23,10 @@ class Kategori extends React.Component {
     componentDidMount() {
         this.setState({ kat: this.props.match.params.kat_id }, () => {
             const self = this;
-
-            console.log("yayay", self.state.kat);
             axios
                 .get(urlHeadline)
                 .then(function(response) {
-                    self.setState({ listNews: response.data.articles });
-                    // console.log(response);
+                    self.props.setListNews(response.data.articles);
                 })
                 .catch(function(error) {
                     console.log(error);
@@ -46,7 +43,7 @@ class Kategori extends React.Component {
                 )
 
                 .then(function(response) {
-                    self.setState({ topNews: response.data.sources });
+                    self.props.setTopNews(response.data.sources);
                     console.log("to news", response);
                 })
                 .catch(function(error) {
@@ -74,7 +71,8 @@ class Kategori extends React.Component {
                     )
 
                     .then(function(response) {
-                        self.setState({ topNews: response.data.sources });
+                        self.props.setTopNews(response.data.sources);
+
                         console.log("to news", response);
                     })
                     .catch(function(error) {
@@ -102,7 +100,7 @@ class Kategori extends React.Component {
                             apiKey
                     )
                     .then(function(response) {
-                        self.setState({ topNews: response.data.articles });
+                        self.props.setTopNews(response.data.articles);
                         console.log("search", response);
                     })
                     .catch(function(error) {
@@ -123,10 +121,10 @@ class Kategori extends React.Component {
                 <div class="container py-5">
                     <div class="row">
                         <div class="col-4">
-                            <SideBar news={this.state.listNews.slice(0, 5)} />
+                            <SideBar news={this.props.listNews.slice(0, 5)} />
                         </div>
                         <div class="col-8">
-                            <News news={this.state.topNews} />
+                            <News news={this.props.topNews} />
                         </div>
                     </div>
                 </div>
@@ -135,4 +133,7 @@ class Kategori extends React.Component {
     }
 }
 
-export default Kategori;
+export default connect(
+    "username, email, status,listNews,topNews",
+    actions
+)(Kategori);
